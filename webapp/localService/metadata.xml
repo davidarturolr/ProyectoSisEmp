@@ -1,0 +1,185 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="4caa22714f83d3911b0e64b1" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="4caa22714f83d3911b0e64b1_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="ProductSet" EntityType="4caa22714f83d3911b0e64b1.Product" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="ProductSupplierSupplier" Association="4caa22714f83d3911b0e64b1.ProductSupplierSupplier" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ProductSet" Role="FromRole_ProductSupplierSupplier"/>
+                    <End EntitySet="SupplierSet" Role="ToRole_ProductSupplierSupplier"/>
+                </AssociationSet>
+                <AssociationSet Name="ProductReviewsReview" Association="4caa22714f83d3911b0e64b1.ProductReviewsReview" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ProductSet" Role="FromRole_ProductReviewsReview"/>
+                    <End EntitySet="ReviewSet" Role="ToRole_ProductReviewsReview"/>
+                </AssociationSet>
+                <AssociationSet Name="ProductProductsReview" Association="4caa22714f83d3911b0e64b1.ProductProductsReview" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ProductSet" Role="FromRole_ProductProductsReview"/>
+                    <End EntitySet="ReviewSet" Role="ToRole_ProductProductsReview"/>
+                </AssociationSet>
+                <EntitySet Name="SupplierSet" EntityType="4caa22714f83d3911b0e64b1.Supplier" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ReviewSet" EntityType="4caa22714f83d3911b0e64b1.Review" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="ReviewProductProduct" Association="4caa22714f83d3911b0e64b1.ReviewProductProduct" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ReviewSet" Role="FromRole_ReviewProductProduct"/>
+                    <End EntitySet="ProductSet" Role="ToRole_ReviewProductProduct"/>
+                </AssociationSet>
+                <AssociationSet Name="ReviewCOdesCodes" Association="4caa22714f83d3911b0e64b1.ReviewCOdesCodes" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ReviewSet" Role="FromRole_ReviewCOdesCodes"/>
+                    <End EntitySet="CodesSet" Role="ToRole_ReviewCOdesCodes"/>
+                </AssociationSet>
+                <EntitySet Name="EstadoSet" EntityType="4caa22714f83d3911b0e64b1.Estado" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="CodesSet" EntityType="4caa22714f83d3911b0e64b1.Codes" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="CodesRelationNameReview" Association="4caa22714f83d3911b0e64b1.CodesRelationNameReview" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="CodesSet" Role="FromRole_CodesRelationNameReview"/>
+                    <End EntitySet="ReviewSet" Role="ToRole_CodesRelationNameReview"/>
+                </AssociationSet>
+                <EntitySet Name="CategoriaSet" EntityType="4caa22714f83d3911b0e64b1.Categoria" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="UnidadesSet" EntityType="4caa22714f83d3911b0e64b1.Unidades" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+            </EntityContainer>
+            <EntityType Name="Product">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Name" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="Name"/>
+                <Property Name="Category" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Category"/>
+                <Property Name="Price" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Review\&quot;,\&quot;navPropId\&quot;:\&quot;Reviews\&quot;,\&quot;navPropOp\&quot;:\&quot;sum\&quot;,\&quot;propertyId\&quot;:\&quot;Price\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;navPropName\&quot;:\&quot;Reviews\&quot;,\&quot;entityName\&quot;:\&quot;Review\&quot;,\&quot;propertyName\&quot;:\&quot;Price\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;navPropId&quot;:&quot;Reviews&quot;,&quot;entityId&quot;:&quot;Review&quot;,&quot;propertyId&quot;:&quot;Price&quot;}]}" sap:label="Price"/>
+                <Property Name="Currency" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Currency"/>
+                <Property Name="StockLevel" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="StockLevel"/>
+                <Property Name="StockLevelCC" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="StockLevelCC"/>
+                <Property Name="PriceRange" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PriceRange"/>
+                <Property Name="___FK_4d9b4038bbbaa7261af341b7_00023" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_4d9b4038bbbaa7261af341b7_00023"/>
+                <Property Name="___FK_d94837b6c46bcf681b10ecb2_00007" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_d94837b6c46bcf681b10ecb2_00007"/>
+                <NavigationProperty Name="Supplier" Relationship="4caa22714f83d3911b0e64b1.ProductSupplierSupplier" FromRole="FromRole_ProductSupplierSupplier" ToRole="ToRole_ProductSupplierSupplier"/>
+                <NavigationProperty Name="Reviews" Relationship="4caa22714f83d3911b0e64b1.ProductReviewsReview" FromRole="FromRole_ProductReviewsReview" ToRole="ToRole_ProductReviewsReview"/>
+                <NavigationProperty Name="Products" Relationship="4caa22714f83d3911b0e64b1.ProductProductsReview" FromRole="FromRole_ProductProductsReview" ToRole="ToRole_ProductProductsReview"/>
+            </EntityType>
+            <Association Name="ProductSupplierSupplier">
+                <End Type="4caa22714f83d3911b0e64b1.Product" Multiplicity="1" Role="FromRole_ProductSupplierSupplier"/>
+                <End Type="4caa22714f83d3911b0e64b1.Supplier" Multiplicity="1" Role="ToRole_ProductSupplierSupplier"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ProductSupplierSupplier">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ProductSupplierSupplier">
+                        <PropertyRef Name="___FK_4d9b4038bbbaa7261af341b7_00023"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProductReviewsReview">
+                <End Type="4caa22714f83d3911b0e64b1.Product" Multiplicity="1" Role="FromRole_ProductReviewsReview"/>
+                <End Type="4caa22714f83d3911b0e64b1.Review" Multiplicity="*" Role="ToRole_ProductReviewsReview"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ProductReviewsReview">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ProductReviewsReview">
+                        <PropertyRef Name="___FK_4d9b4038bbbaa7261af341b7_00025"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ProductProductsReview">
+                <End Type="4caa22714f83d3911b0e64b1.Product" Multiplicity="1" Role="FromRole_ProductProductsReview"/>
+                <End Type="4caa22714f83d3911b0e64b1.Review" Multiplicity="1" Role="ToRole_ProductProductsReview"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ProductProductsReview">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ProductProductsReview">
+                        <PropertyRef Name="___FK_d94837b6c46bcf681b10ecb2_00007"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Supplier">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Name" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Name"/>
+                <Property Name="email" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="email"/>
+                <Property Name="Phone" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Phone"/>
+                <Property Name="URI" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="URI"/>
+            </EntityType>
+            <EntityType Name="Review">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Rating" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Rating"/>
+                <Property Name="Reviewer" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Reviewer"/>
+                <Property Name="ReviewDate" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ReviewDate"/>
+                <Property Name="ReviewText" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;!=\&quot;,\&quot;name\&quot;:\&quot;different\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Review\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;Reviewer\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;String\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;string\&quot;,\&quot;entityName\&quot;:\&quot;Review\&quot;,\&quot;propertyName\&quot;:\&quot;Reviewer\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Codes\&quot;,\&quot;navPropId\&quot;:\&quot;COdes\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;ID\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;String\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;string\&quot;,\&quot;navPropName\&quot;:\&quot;COdes\&quot;,\&quot;entityName\&quot;:\&quot;Codes\&quot;,\&quot;propertyName\&quot;:\&quot;ID\&quot;}],\&quot;displayLabel\&quot;:\&quot;≠\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;\\\&quot;---\\\&quot;\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Codes\&quot;,\&quot;navPropId\&quot;:\&quot;COdes\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;nombre\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;String\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;,\&quot;navPropName\&quot;:\&quot;COdes\&quot;,\&quot;entityName\&quot;:\&quot;Codes\&quot;,\&quot;propertyName\&quot;:\&quot;nombre\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;Review&quot;,&quot;propertyId&quot;:&quot;Reviewer&quot;},{&quot;navPropId&quot;:&quot;COdes&quot;,&quot;entityId&quot;:&quot;Codes&quot;,&quot;propertyId&quot;:&quot;ID&quot;},{&quot;navPropId&quot;:&quot;COdes&quot;,&quot;entityId&quot;:&quot;Codes&quot;,&quot;propertyId&quot;:&quot;nombre&quot;}]}" sap:label="ReviewText"/>
+                <Property Name="___FK_4d9b4038bbbaa7261af341b7_00025" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_4d9b4038bbbaa7261af341b7_00025"/>
+                <Property Name="___FK_4d9b4038bbbaa7261af341b7_00027" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_4d9b4038bbbaa7261af341b7_00027"/>
+                <Property Name="Price" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Price"/>
+                <Property Name="Unit" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Unit"/>
+                <Property Name="PriceUnit" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="pRICEuNIT"/>
+                <Property Name="priceTotal" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;*\&quot;,\&quot;name\&quot;:\&quot;times\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Review\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;Price\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Review\&quot;,\&quot;propertyName\&quot;:\&quot;Price\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Review\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;Rating\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:true,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Review\&quot;,\&quot;propertyName\&quot;:\&quot;Rating\&quot;}],\&quot;displayLabel\&quot;:\&quot;*\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;number\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;Review&quot;,&quot;propertyId&quot;:&quot;Price&quot;},{&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;Review&quot;,&quot;propertyId&quot;:&quot;Rating&quot;}]}" sap:label="priceTotal"/>
+                <Property Name="___FK_c921bd878f3b6f651b1112ee_00005" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_c921bd878f3b6f651b1112ee_00005"/>
+                <NavigationProperty Name="Product" Relationship="4caa22714f83d3911b0e64b1.ReviewProductProduct" FromRole="FromRole_ReviewProductProduct" ToRole="ToRole_ReviewProductProduct"/>
+                <NavigationProperty Name="COdes" Relationship="4caa22714f83d3911b0e64b1.ReviewCOdesCodes" FromRole="FromRole_ReviewCOdesCodes" ToRole="ToRole_ReviewCOdesCodes"/>
+            </EntityType>
+            <Association Name="ReviewProductProduct">
+                <End Type="4caa22714f83d3911b0e64b1.Review" Multiplicity="1" Role="FromRole_ReviewProductProduct"/>
+                <End Type="4caa22714f83d3911b0e64b1.Product" Multiplicity="1" Role="ToRole_ReviewProductProduct"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ReviewProductProduct">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ReviewProductProduct">
+                        <PropertyRef Name="___FK_4d9b4038bbbaa7261af341b7_00027"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ReviewCOdesCodes">
+                <End Type="4caa22714f83d3911b0e64b1.Review" Multiplicity="1" Role="FromRole_ReviewCOdesCodes"/>
+                <End Type="4caa22714f83d3911b0e64b1.Codes" Multiplicity="1" Role="ToRole_ReviewCOdesCodes"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ReviewCOdesCodes">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ReviewCOdesCodes">
+                        <PropertyRef Name="___FK_c921bd878f3b6f651b1112ee_00005"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Estado">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+            </EntityType>
+            <EntityType Name="Codes">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="nombre" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="nombre"/>
+                <Property Name="___FK_c921bd878f3b6f651b1112ee_00003" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_c921bd878f3b6f651b1112ee_00003"/>
+                <NavigationProperty Name="RelationName" Relationship="4caa22714f83d3911b0e64b1.CodesRelationNameReview" FromRole="FromRole_CodesRelationNameReview" ToRole="ToRole_CodesRelationNameReview"/>
+            </EntityType>
+            <Association Name="CodesRelationNameReview">
+                <End Type="4caa22714f83d3911b0e64b1.Codes" Multiplicity="1" Role="FromRole_CodesRelationNameReview"/>
+                <End Type="4caa22714f83d3911b0e64b1.Review" Multiplicity="1" Role="ToRole_CodesRelationNameReview"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_CodesRelationNameReview">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_CodesRelationNameReview">
+                        <PropertyRef Name="___FK_c921bd878f3b6f651b1112ee_00003"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="Categoria">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+            </EntityType>
+            <EntityType Name="Unidades">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

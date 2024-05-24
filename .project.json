@@ -1,0 +1,19 @@
+{
+    "dataBinding": {
+        "/webapp/view/Page5.view.xml": {
+            "entitySet": "/ProductSet"
+        }, 
+        "/webapp/view/Page4.view.xml": {
+            "entitySet": "/ReviewSet"
+        }, 
+        "/webapp/view/Page3.view.xml": {
+            "entitySet": "/ProductSet"
+        }, 
+        "/webapp/view/Page2.view.xml": {
+            "entitySet": "/ProductSet"
+        }, 
+        "/webapp/view/Page1.view.xml": {
+            "entitySet": ""
+        } 
+    }
+}
